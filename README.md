@@ -11,6 +11,8 @@ Plot sales plan for 25,000 sq yd of land divided into 150 sq yd plots (166 plots
 - `output/R2_Sales_Plan.xlsx`: R2 plan, salespeople earn a fixed INR per sq yd (1 plot Rs 1,700; 2 to 4 plots Rs 1,800; 5+ plots Rs 2,000, applied to all plots). 30-person tracker, R1 vs R2 comparison, developer margin.
 - `output/R2_Sales_Partner_Plan.pptx`: 9-slide deck for sales partners only, explaining R2.
 - Hindi and Gujarati versions of both decks: `*_Hindi.pptx`, `*_Gujarati.pptx`. They use the Nirmala UI font (included with Windows and Office).
+- `output/Land_Deal_Payment_Plan.xlsx`: private plan for the landowners. Rs 37.5 Cr paid over 8 months (10% token at signing, then monthly), partner split, 1% TDS, a check of whether the developer's plot sales can fund each payment, and a safeguards checklist.
+- `output/Land_Deal_Plan_for_Landowners.pptx`: 10-slide deck of the same plan for the two partners.
 - `assets/<lang>/`: illustrations per language (en, hi, gu).
 - `scripts/`: `build_xlsx.py`, `build_pdf.py`, `build_images.py`, `build_deck.py` regenerate everything.
 
@@ -37,6 +39,8 @@ mv output/recalc/Plotting_Sales_Plan.xlsx output/ && rmdir output/recalc
 python scripts/build_pdf.py
 for l in en hi gu; do python scripts/build_images.py $l; python scripts/build_deck.py $l; python scripts/build_r2_deck.py $l; done
 python scripts/build_r2_xlsx.py   # then recalculate with soffice as above
+python scripts/build_land_xlsx.py # recalculate with soffice, then:
+python scripts/build_land_deck.py
 ```
 
 Translations live in `scripts/strings_hi.py` and `scripts/strings_gu.py` (English text is the key). Images need Noto Sans Devanagari / Gujarati fonts (`apt install fonts-noto-core`) and Pillow with raqm.
