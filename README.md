@@ -7,7 +7,9 @@ Plot sales plan for 25,000 sq yd of land divided into 150 sq yd plots (166 plots
 - `output/Plotting_Sales_Plan.xlsx`: workbook with live formulas. Yellow cells are inputs.
   Sheets: Inputs, Commission Ladder, Plot & Revenue, Salesperson Tracker (30 people), Payment Plans (DP vs EMI), Profit Summary.
 - `output/Plotting_Sales_Plan_Summary.pdf`: 3-page summary of the plan.
-- `scripts/build_xlsx.py`, `scripts/build_pdf.py`: regenerate the files.
+- `output/Changodar_Plots_Marketing.pptx`: 10-slide marketing deck for buyers and sales partners (layout, pricing, DP vs EMI, ladder income, how to book). Fill in the phone number on the last slide.
+- `assets/`: illustrations used in the deck.
+- `scripts/`: `build_xlsx.py`, `build_pdf.py`, `build_images.py`, `build_deck.py` regenerate everything.
 
 ## Key numbers (default inputs, sample sales split)
 
@@ -24,10 +26,11 @@ Plot sales plan for 25,000 sq yd of land divided into 150 sq yd plots (166 plots
 ## Regenerate
 
 ```bash
-pip install openpyxl reportlab
+pip install openpyxl reportlab matplotlib python-pptx
 python scripts/build_xlsx.py
 # Recalculate so cached values are stored (needed by the PDF script):
 soffice --headless --convert-to xlsx --outdir output/recalc output/Plotting_Sales_Plan.xlsx
 mv output/recalc/Plotting_Sales_Plan.xlsx output/ && rmdir output/recalc
 python scripts/build_pdf.py
+python scripts/build_images.py && python scripts/build_deck.py
 ```
