@@ -7,10 +7,11 @@ Plot sales plan for 25,000 sq yd of land divided into 150 sq yd plots (166 plots
 - `output/Plotting_Sales_Plan.xlsx`: workbook with live formulas. Yellow cells are inputs.
   Sheets: Inputs, Commission Ladder, Plot & Revenue, Salesperson Tracker (30 people), Payment Plans (DP vs EMI), Profit Summary.
 - `output/Plotting_Sales_Plan_Summary.pdf`: 3-page summary of the plan.
-- `output/Changodar_Plots_Marketing.pptx`: 10-slide marketing deck for buyers and sales partners (layout, pricing, DP vs EMI, ladder income, how to book). Fill in the phone number on the last slide.
+- `output/Changodar_Plots_Marketing.pptx`: 10-slide marketing deck for buyers and sales partners (layout, pricing, DP vs EMI, ladder income, how to book). Contact on the last slide: Harman Ram, +91 7777999896.
 - `output/R2_Sales_Plan.xlsx`: R2 plan, salespeople earn a fixed INR per sq yd (1 plot Rs 1,700; 2 to 4 plots Rs 1,800; 5+ plots Rs 2,000, applied to all plots). 30-person tracker, R1 vs R2 comparison, developer margin.
 - `output/R2_Sales_Partner_Plan.pptx`: 9-slide deck for sales partners only, explaining R2.
-- `assets/`: illustrations used in the deck.
+- Hindi and Gujarati versions of both decks: `*_Hindi.pptx`, `*_Gujarati.pptx`. They use the Nirmala UI font (included with Windows and Office).
+- `assets/<lang>/`: illustrations per language (en, hi, gu).
 - `scripts/`: `build_xlsx.py`, `build_pdf.py`, `build_images.py`, `build_deck.py` regenerate everything.
 
 ## Key numbers (default inputs, sample sales split)
@@ -34,7 +35,8 @@ python scripts/build_xlsx.py
 soffice --headless --convert-to xlsx --outdir output/recalc output/Plotting_Sales_Plan.xlsx
 mv output/recalc/Plotting_Sales_Plan.xlsx output/ && rmdir output/recalc
 python scripts/build_pdf.py
-python scripts/build_images.py && python scripts/build_deck.py
+for l in en hi gu; do python scripts/build_images.py $l; python scripts/build_deck.py $l; python scripts/build_r2_deck.py $l; done
 python scripts/build_r2_xlsx.py   # then recalculate with soffice as above
-python scripts/build_r2_images.py && python scripts/build_r2_deck.py
 ```
+
+Translations live in `scripts/strings_hi.py` and `scripts/strings_gu.py` (English text is the key). Images need Noto Sans Devanagari / Gujarati fonts (`apt install fonts-noto-core`) and Pillow with raqm.
