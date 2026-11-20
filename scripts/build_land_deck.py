@@ -63,7 +63,7 @@ D.text(s, 0.9, 1.7, 11.5, 0.6, "PRIVATE  |  FOR THE LANDOWNERS", 18, GOLD, True)
 D.text(s, 0.9, 2.3, 11.5, 1.2, "Our Land Deal: Changodar", 56, WHITE, True)
 D.text(s, 0.9, 3.55, 11.5, 0.8, f"25,000 sq yd to the developer at Rs 15,000 / sq yd. {cr(TOTAL)}, fully paid in 8 months.", 24, WHITE)
 D.rect(s, 0.9, 4.75, 5.2, 0.9, GOLD, MSO_SHAPE.ROUNDED_RECTANGLE)
-D.text(s, 0.9, 4.75, 5.2, 0.9, f"{P1} and {P2}: {SH:.0%} / {1-SH:.0%}", 22, DARK, True, PP_ALIGN.CENTER, MSO_ANCHOR.MIDDLE)
+D.text(s, 0.9, 4.75, 5.2, 0.9, f"{P1} & {P2}", 22, DARK, True, PP_ALIGN.CENTER, MSO_ANCHOR.MIDDLE)
 
 s = D.slide(); D.bg(s)
 D.heading(s, "The Deal at a Glance", "We sell the whole land at a flat rate; the developer takes the selling risk")
